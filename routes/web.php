@@ -10,15 +10,20 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\TableController;
 use App\Http\Controllers\ChartsController;
 use App\Http\Controllers\FoobarController;
+use App\Http\Controllers\HadiahController;
+use App\Http\Controllers\UndianController;
+use App\Http\Controllers\PesertaController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExtensionController;
 use App\Http\Controllers\ComponentsController;
 use App\Http\Controllers\PageLayoutController;
+use App\Http\Controllers\PartisipanController;
 use App\Http\Controllers\MiscellaneousController;
 use App\Http\Controllers\UserInterfaceController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\Auth\ChangePasswordController;
+use App\Models\Partisipan;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,3 +52,13 @@ Route::middleware('role:administrator')->group(function () {
   Route::get('change-password', [ChangePasswordController::class, 'index'])->name('change-password.index');
   Route::put('change-password', [ChangePasswordController::class, 'change'])->name('change-password.store');
 });
+
+Route::get('hadiah/data-list', [HadiahController::class, 'dataList'])->name('hadiah.data.list');
+Route::resource('hadiah', HadiahController::class);
+Route::get('partisipan/data-list', [PartisipanController::class, 'dataList'])->name('partisipan.data.list');
+Route::resource('partisipan', PartisipanController::class);
+Route::get('hadiah/data-list', [HadiahController::class, 'dataList'])->name('hadiah.data.list');
+Route::resource('hadiah', HadiahController::class);
+
+Route::get('undian', [DashboardController::class, 'undian'])->name('hadiah.undian');
+Route::post('simpan-undian', [DashboardController::class, 'simpan'])->name('undian.simpan');

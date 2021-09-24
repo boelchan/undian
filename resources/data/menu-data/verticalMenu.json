@@ -10,20 +10,29 @@
       "slug": ""
     },
     {
-      "navheader": "User",
+      "navheader": "Undian",
       "guard": [
         "administrator"
       ],
       "slug": ""
     },
     {
-      "url": "user",
-      "name": "Operator",
+      "url": "hadiah",
+      "name": "Hadiah",
+      "icon": "gift",
+      "guard": [
+        "administrator"
+      ],
+      "slug": "hadiah"
+    },
+    {
+      "url": "partisipan",
+      "name": "Partisipan",
       "icon": "users",
       "guard": [
         "administrator"
       ],
-      "slug": "user"
+      "slug": "partisipan"
     }
   ]
 }
