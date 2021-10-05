@@ -4,6 +4,86 @@
 
 @section('content')
 
+
+<style>
+    h1#headerNames {
+        color: rgb(9, 219, 2);
+        font-family: Georgia, serif;
+        font-size: 100px;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    #headerAdd, #headerNik {
+        color: rgb(9, 219, 2);
+        font-family: Georgia, serif;
+        font-size: 50px;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .button {
+        margin: auto;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    #stopButton {
+        display: none;
+    }
+
+    #timerWrapper {
+        margin: 50px 0;
+        color: #fff;
+        font-family: Arial, sans-serif;
+        font-size: 50px;
+        text-align: center;
+        opacity: 0;
+        transition: opacity 1s;
+    }
+
+    #timerWrapper.visible {
+        opacity: 1;
+    }
+
+    #timesUp {
+        padding-top: 20%;
+        background-color: red;
+        color: rgb(255, 255, 255);
+        font-family: Arial, sans-serif;
+        font-size: 100px;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-align: center;
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        display: none;
+
+        a {
+            margin: 100px auto;
+            font-size: 15px;
+            position: absolute;
+            bottom: 50px;
+            left: 0;
+            right: 0;
+            display: none;
+        }
+    }
+
+    #timesUp.backgroundRed {
+        background-color: #333;
+    }
+
+    @media only screen and (max-width: 600px) {
+        h1 {
+            font-size: 50px;
+        }
+    }
+</style>
+
 <div class="row">
     <div class="col-md-12 col-12">
         <div class="card">
@@ -16,98 +96,22 @@
             </div>
             <div class="card-body">
 
-                <style>
-                    h1#headerNames {
-                        color: rgb(9, 219, 2);
-                        font-family: Georgia, serif;
-                        font-size: 50px;
-                        text-align: center;
-                        cursor: pointer;
-                    }
-                    #headerAdd {
-                        color: rgb(9, 219, 2);
-                        font-family: Georgia, serif;
-                        font-size: 50px;
-                        text-align: center;
-                        cursor: pointer;
-                    }
-
-                    .button {
-                        margin: auto;
-                        text-transform: uppercase;
-                        letter-spacing: 2px;
-                    }
-
-                    #stopButton {
-                        display: none;
-                    }
-
-                    #timerWrapper {
-                        margin: 50px 0;
-                        color: #fff;
-                        font-family: Arial, sans-serif;
-                        font-size: 50px;
-                        text-align: center;
-                        opacity: 0;
-                        transition: opacity 1s;
-                    }
-
-                    #timerWrapper.visible {
-                        opacity: 1;
-                    }
-
-                    #timesUp {
-                        padding-top: 20%;
-                        background-color: red;
-                        color: rgb(255, 255, 255);
-                        font-family: Arial, sans-serif;
-                        font-size: 100px;
-                        font-weight: bold;
-                        text-transform: uppercase;
-                        text-align: center;
-                        position: fixed;
-                        left: 0;
-                        right: 0;
-                        top: 0;
-                        bottom: 0;
-                        display: none;
-
-                        a {
-                            margin: 100px auto;
-                            font-size: 15px;
-                            position: absolute;
-                            bottom: 50px;
-                            left: 0;
-                            right: 0;
-                            display: none;
-                        }
-                    }
-
-                    #timesUp.backgroundRed {
-                        background-color: #333;
-                    }
-
-                    @media only screen and (max-width: 600px) {
-                        h1 {
-                            font-size: 50px;
-                        }
-                    }
-                </style>
-
-                <div class="row">
+                <div class="row" style="height: 400px">
                     <div class="col-12">
                         <h1 id="headerNames">?</h1>
+                        <h3 id="headerNik">&nbsp;</h3>
                         <h3 id="headerAdd">&nbsp;</h3>
                     </div>
+                </div>
+                <div class="row">
                     <div class="btn btn-danger btn-lg button" id="stopButton">stop</div>
                     <div class="btn btn-success btn-lg button" id="startButton">start</div>
                     <div class="btn btn-warning btn-lg button" id="ulangButton">Ulang</div>
-                    <br>
-                    <form action="{{ route('undian.simpan') }}" method="post" id='form_simpan'>
+                    <form action="{{ route('undian.simpan') }}" method="post" id='form_simpan' class="button">
                         @csrf
                         {!! Form::hidden('partisipan_id', $pemenang->id) !!}
                         {!! Form::hidden('hadiah_id', $hadiah->id) !!}
-                        <button  type="submit" class="btn btn-info btn-lg" id="simpanButton" >Simpan</button>
+                        <button type="submit" class="btn btn-info btn-lg" id="simpanButton">Simpan</button>
                     </form>
                 </div>
             </div>
@@ -140,6 +144,7 @@ const ulangButton = document.getElementById('ulangButton');
 const simpanButton = document.getElementById('form_simpan');
 const headerOne = document.getElementById('headerNames');
 const headerAdd = document.getElementById('headerAdd');
+const headerNik = document.getElementById('headerNik');
 const timesUp = document.getElementById('timesUp');
 const timerWrapper = document.getElementById('timerWrapper');
 const timer = document.getElementById('timer');
@@ -181,6 +186,7 @@ ulangButton.style.display = "none";
 startButton.addEventListener('click', function() {
 	this.style.display = "none";
     headerAdd.innerHTML = '&nbsp;';
+    headerNik.innerHTML = '&nbsp;';
 	stopButton.style.display = "block";
 	intervalHandle = setInterval(function () {
 		headerNames.textContent = namesList[i++ % namesList.length];
@@ -195,7 +201,8 @@ stopButton.addEventListener('click', function() {
 	simpanButton.style.display = "block";
 	clearInterval(intervalHandle);
     headerOne.innerHTML = '{{ $pemenang->nama }}';
-    headerAdd.innerHTML = '{{ $pemenang->nik }}';
+    headerAdd.innerHTML = '{{ $pemenang->alamat }}';
+    headerNik.innerHTML = '{{ $pemenang->nik }}';
 	timer.innerHTML = time;
 	if (showTimer===true) {
 		timerWrapper.classList.add('visible');

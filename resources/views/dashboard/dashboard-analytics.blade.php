@@ -32,13 +32,13 @@
 
     <div class="col-lg-3 col-md-6 col-12">
       <div class="card">
-        <img class="card-img p-2" src="{{asset('storage/icon/'.$item->icon)}}" />
+        <img class="card-img p-2" style="width: 200px!important;margin:auto;" src="{{asset('storage/icon/'.$item->icon)}}" />
         <div class="card-body">
           <h4 class="card-title">{{ $item->hadiah }}</h4>
           @if ($item->pemenang)
           <div class="alert alert-primary" role="alert">
             <h4 class="alert-heading">{{ @$item->pemenang->nama }}</h4>
-            <div class="alert-body">{{ @$item->pemenang->nik}}</div>
+            <div class="alert-body">{{ @$item->pemenang->nik}}<br>{{ @$item->pemenang->alamat}}</div>
           </div>
           @else
           <form action="{{ route('hadiah.undian') }}" method="get">

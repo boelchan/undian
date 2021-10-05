@@ -20,6 +20,8 @@ class DashboardController extends Controller
     {
         $hadiah = Hadiah::findOrFail($request->hadiah);
 
+        abort_if(($hadiah->status == 'sudah'), 404, 'adsasdasd');
+
         $partisipan = Partisipan::select('id')->whereNull('hadiah')->orWhere('hadiah', '')->get();
         $jumlah_partisipan = $partisipan->count();
 
