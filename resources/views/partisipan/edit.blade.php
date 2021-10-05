@@ -18,7 +18,6 @@
                         {!! Form::vText('nik') !!}
                         {!! Form::vText('nama') !!}
                         {!! Form::vTextarea('alamat') !!}
-                        {!! Form::vText('hadiah') !!}
 
                         <div class="form-group">
                             {!! Form::submit('Simpan Perubahan', ['class' => 'btn btn-primary']) !!}

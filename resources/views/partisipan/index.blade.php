@@ -18,16 +18,13 @@
                 <!--Search Form -->
                 <div class="collapse-margin ml-2 mr-2" id="accordionExample">
                     <div class="card">
-                        <div id="collapseFilter" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample" style="">
+                        <div id="collapseFilter" class="" aria-labelledby="headingOne" data-parent="#accordionExample" style="">
                             <div class="card-body">
                                 <h5>Filter</h5>
                                 <div class="form-row mb-1">
                                     <div class="col-lg-4 filter-table">
                         {!! Form::vText('nik') !!}
                         {!! Form::vText('nama') !!}
-                        {!! Form::vTextarea('alamat') !!}
-                        {!! Form::vText('hadiah') !!}
-
                                     </div>
                                 </div>
                                 <div>
@@ -79,7 +76,7 @@
             { data: 'nik', name: 'nik'},
             { data: 'nama', name: 'nama'},
             { data: 'alamat', name: 'alamat'},
-            { data: 'hadiah', name: 'hadiah'},
+            { data: 'undian', name: 'undian'},
             
             { data: 'action', name: 'action', orderable: false, searchable: false}
         ],

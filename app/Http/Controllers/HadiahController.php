@@ -6,6 +6,7 @@ use App\Models\Hadiah;
 use App\Models\Partisipan;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\Validator;
 
@@ -24,7 +25,7 @@ class HadiahController extends Controller
      */
     public function dataList(Request $request)
     {
-        $hadiah = Hadiah::select(['id', 'hadiah', 'status', 'icon']);
+        $hadiah = Hadiah::select(['id', 'hadiah', 'status', 'icon'])->orderBy('id', 'asc');
 
         return Datatables::of($hadiah)
             ->addIndexColumn()
@@ -44,7 +45,7 @@ class HadiahController extends Controller
                 return $btn;
             })
             ->editColumn('hadiah', function ($hadiah) {
-                return '<img src="' . asset("storage/icon/" . $hadiah->icon) . '" alt="" width="50px"> '. $hadiah->hadiah;
+                return '<img src="' . asset("storage/icon/" . $hadiah->icon) . '" alt="" width="50px"> ' . $hadiah->hadiah;
             })
             ->rawColumns(['hadiah', 'action'])
             ->make();
@@ -131,12 +132,17 @@ class HadiahController extends Controller
 
     public function reload(Hadiah $hadiah)
     {
-        $hadiah->status = 'belum';
-        $hadiah->save();
+        DB::transaction(function () use ($hadiah) {
+            $partisipan = Partisipan::firstWhere('hadiah', $hadiah->id);
+            if ($partisipan) {
+                $partisipan->hadiah = null;
+                $partisipan->save();
+            }
 
-        $partisipan = Partisipan::firstWhere('hadiah', $hadiah->id);
-        $partisipan->hadiah = null;
-        $partisipan->save();
+            $hadiah->status = 'belum';
+            $hadiah->save();
+        });
+
 
         return response()->json([
             'success' => true

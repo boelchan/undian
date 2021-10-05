@@ -17,10 +17,10 @@ class Partisipan extends Model
     protected $table = 'partisipans';
 
     /**
-    * The database primary key value.
-    *
-    * @var string
-    */
+     * The database primary key value.
+     *
+     * @var string
+     */
     protected $primaryKey = 'id';
 
     /**
@@ -28,7 +28,5 @@ class Partisipan extends Model
      *
      * @var array
      */
-    protected $fillable = ['nik', 'nama', 'alamat', 'hadiah'];
-
-    
+    protected $fillable = ['nik', 'nama', 'alamat', 'hadiah', 'telepon'];
 }

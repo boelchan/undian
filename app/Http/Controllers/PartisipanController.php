@@ -22,7 +22,8 @@ class PartisipanController extends Controller
      */
     public function dataList(Request $request)
     {
-        $partisipan = Partisipan::select(['id', 'nik','nama','alamat','hadiah']);
+        $partisipan = Partisipan::select(['partisipans.id', 'nik','nama','alamat','hadiahs.hadiah as undian'])
+            ->leftJoin('hadiahs', 'hadiahs.id', '=', 'partisipans.hadiah');
 
         return Datatables::of($partisipan)
             ->addIndexColumn()
