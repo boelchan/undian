@@ -20,7 +20,7 @@
                     h1#headerNames {
                         color: rgb(9, 219, 2);
                         font-family: Georgia, serif;
-                        font-size: 150px;
+                        font-size: 50px;
                         text-align: center;
                         cursor: pointer;
                     }
@@ -129,8 +129,7 @@ const showTimer = true;
 const time = 0 + ":" + 19;
 
 // Add list of names here
-const namesList = ["Amal","Upton","Colleen","Dane","Ulysses","Malik","Caesar","Kerry","Halee","Brielle","Julian","Jaquelyn","Igor","Olivia","Byron","Brandon","Jamalia","Noelle","Petra","Gay","Kibo","Urielle","Marah","Samantha","Kamal","Clarke","Sade","Velma","Shoshana","Quentin","Maite","Charissa","Juliet","Georgia","Whitney","Jerome","Alexandra","Jeremy","Cassidy","Haviva","Alexandra","Wendy","Hakeem","Shaine","Omar","Ulric","William","Jasmine","Luke","Portia","Reece","Caesar","Jessica","Isadora","Ursula","Ainsley","Kadeem","Zephr","Norman","Jared","Kendall","Nyssa","Hope","Halee","Abigail","Cody","Bryar","Uta","Leslie","Rhoda","Karina","Lester","Maggy","Chantale","Acton","Rama","Haviva","Troy","Merritt","Kyra","Mason","Lee","Audrey","Jin","Lyle","Serina","Maggie","Yolanda","Kylee","Minerva","Sebastian","Brent","Jermaine","Chester","Nathan","Sage","Dolan","Judah","Berk","Yetta"];
-
+const namesList = ['SUHARTINI, Amd. Keb', 'HASIYATUN', 'RATNA AZIZAH, Amd. Keb', 'IMAM BUDI WAHYONO', 'SYAIFUL EFENDI, Amd. Kep', 'MOH. ABD. KADIR, Amd. Kep', 'HAYATI, Amd. Keb', 'EKO WAHYUNI, Amd. Keb', 'AGUS BUDIYONO, Amd. Kep', 'MAZIDATUN NAIMAH, Amd. Keb', 'R.A. SITI NURUL FARIDA, S. ST', 'ARIF HIDAYANTO, Amd. Kep', 'INDAH PRIHATIN, Amd. Kep', 'ESSY PURNAMA JAYANTI, Amd. Keb', 'ISFIYAH WIDIYANTINA, Amd. Keb', 'ACH. ADIB, Amd. Kep', 'MUHAMMAD ALI MUKHTAR, S.Kep, Ns', 'RUDI HARTONO, Amd. Kep', 'DWI MARIYATIN, Amd. AK', 'JONI RAMLI, Amd. Kep', 'LULUK FAUZIYAH, Amd. Keb', 'dr. Hj. ARIYANIS RASDYAHATI, M.Kes', 'SAID ANAS, S.Kep. Ns', 'EKO SUHARYANTO, Amd. Kep', 'SITI RIDIYAH, Amd. Kep', 'drg. Yudha Ari Winata', 'YATIK IRAWATI, Amd. Keb', 'SUYATI, Amd. Keb', 'TATIK WIDIANA MUSHAN, Amd. Kep', 'DIDIT AGUS SUSANTO, SE', 'SITI LINA AISYAH, Amd. Keb', 'FAUZI', 'SUFIYAHARUM KISMAWARNI, Amd. AK', 'EKA NURMANTO, Amd. Kep', 'LATIFATUL KAMALIA, Amd. Keb', 'HABIBI, Amd. Kep', 'MUHAMMAD LUKMANUR HAYADI, S.Kep, Ns', 'ZEKARIYA WEIS SUYUTHI, S.Kep, Ns', 'INDAH KUSUMA WARDANI, Amd. Gz', 'ZAINI', 'SUHARDIANA', 'ALIF NAINI, S.Tr. Keb', 'AHMAD YANI, S.Kep, Ns', 'EDY SANTOSO', 'SYAIFUL BAHRI, Amd. Kes. Gi', 'MAIMUNA', 'YENI RAHMAWATI, Amd. Kep', 'KADAR RUSMAN, Amd. Kep', 'MOCH ZUHRI', 'RIA HADIYANA, Amd.Keb', 'IFADHATUL INSANIYAH, S.Tr, Keb', 'DEVI PISCEYANTI, S.Farm, Apt', 'YAMA RIAMA, Amd. Kep', 'NISA OKTAVIANA, S.Kep, Ns', 'USWATUN HASANAH, Amd. Keb', 'MARPUAH, S.ST. Keb', 'AH. RASIHAN ANWAR, Amd. Kep', 'ATIYATUN NURANIYAH, AMd. Keb', 'ONY WAHYU JATMIKO, Amd. Kep', 'TITIN NUR SETYAWATI, S .Gz', 'HARIYANTO, Amd. Kep', 'MALTUFAH TIM ANAH BAHRI, Amd. Keb', 'MOHAMMAD KHAIRIL ANWAR, Amd. Kep', 'dr. DESI EKA INDRAYANI', 'EKO SULISTIONO, S.Kep, Ns', 'MOH. MAWARI', 'MOHAMMAD ASAD, S.Kep, Ns', 'IDA SOEMARLIN, Amd. Kep', 'FATMAWATI, S.Kep, Ns', 'FAUZI, S.Kep, Ns', 'FAJAR SIDIK, Amd. Kep', 'SYARIF HIDAYATULLAH, S.AN', 'WAHID HASYIM', 'SANTI DINIYAH, Amd. Kep', 'ACH. WIYONO SANUSI, Amd. Kep', 'LUK LUUL JANNATUL FITRIYAH, Amd. Kes', 'DIAN DWI SASTRAWATI, Amd. Keb', 'DINNA ERFIANA WATI, S.Kep, Ns', 'MOH. FACHRUR RASI, Amd. Kep', 'SUHARJO', 'Romzan Alfiriza Robby', 'DESI PUTRI HERMAWATI', 'ABDUL WARIS', 'SELLY WIDIYA RAHMAN, Amd. Keb', 'MOHAMMAD HASIN, S.Kep.Ns', 'dr. SITI FITRIA NINGSIH', 'YUSNIAWATI FITROH, S.ST. Keb', 'NURUL MUHSINAH, A.Md.Keb', 'EKA DEVI YULIATI, A.Md.Keb', 'Subaidi', 'dr. R.B.M. RAMDHAN AKBAR', 'ROBIATUL ANDAWIYAH, S.Ak', 'NUR HASANAH, A.Md.Kep ', 'TOTOK HERMAN SUGIARTO, A.Md.Kep', 'ZULAIDAH, A.Md.Keb', 'DEWI SRI WAHYUNINGSIH, A.Md.Keb', 'SITI NURAINI, A.Md.Keb', 'SITI SUBAIDAH USRI, A.Md.Keb', 'SITI AISYAH, A.Md.Keb', 'RATNA JUWITA SARI, Amd.Keb'];
 // Default variables
 let i = 0;
 let x = 0;
@@ -196,7 +195,7 @@ stopButton.addEventListener('click', function() {
 	simpanButton.style.display = "block";
 	clearInterval(intervalHandle);
     headerOne.innerHTML = '{{ $pemenang->nama }}';
-    headerAdd.innerHTML = '{{ $pemenang->alamat }}';
+    headerAdd.innerHTML = '{{ $pemenang->nik }}';
 	timer.innerHTML = time;
 	if (showTimer===true) {
 		timerWrapper.classList.add('visible');

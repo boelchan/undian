@@ -17,8 +17,8 @@
                         
                         {!! Form::vText('hadiah') !!}
                         <div class="form-group">
-                            {{ Form::label('Icon', ['class' => 'control-label']) }}
-                            {{ Form::file('icon') }}
+                            {{ Form::label('Icon', null, ['class' => 'control-label']) }}
+                            {{ Form::file('icon', ['class' => 'form-control']) }}
                         </div>
 
                         <div class="form-group">

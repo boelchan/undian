@@ -16,7 +16,6 @@
                     {!! Form::model($hadiah, ['method' => 'PUT', 'route' => ['hadiah.update', $hadiah->id], 'class' => 'form_ajax', 'files'=>true ]) !!}
 
                         {!! Form::vText('hadiah') !!}
-                        {!! Form::vText('status') !!}
                         <div class="form-group">
                             {{ Form::label('Icon', null, ['class' => 'control-label']) }}
                             <br>

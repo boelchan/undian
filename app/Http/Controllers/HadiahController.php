@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Hadiah;
+use App\Models\Partisipan;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
@@ -37,12 +38,15 @@ class HadiahController extends Controller
                 $btn .= ' <a href="javascript:void(0)" data-url="' . route('hadiah.destroy', $hadiah->id) . '" data-token="' . csrf_token() . '" class="text-danger table-delete">
                             <i data-feather="trash"></i>
                         </a>';
+                $btn .= ' <a href="javascript:void(0)" data-url="' . route('hadiah.reload', $hadiah->id) . '" data-token="' . csrf_token() . '" class="text-info table-reload">
+                            <i data-feather="rotate-cw"></i>
+                        </a>';
                 return $btn;
             })
-            ->editColumn('icon', function ($hadiah) {
-                return '<img src="' . asset("storage/icon/" . $hadiah->icon) . '" alt="" width="100px">';
+            ->editColumn('hadiah', function ($hadiah) {
+                return '<img src="' . asset("storage/icon/" . $hadiah->icon) . '" alt="" width="50px"> '. $hadiah->hadiah;
             })
-            ->rawColumns(['icon', 'action'])
+            ->rawColumns(['hadiah', 'action'])
             ->make();
     }
 
@@ -119,6 +123,20 @@ class HadiahController extends Controller
     public function destroy(Hadiah $hadiah)
     {
         $hadiah->delete();
+
+        return response()->json([
+            'success' => true
+        ]);
+    }
+
+    public function reload(Hadiah $hadiah)
+    {
+        $hadiah->status = 'belum';
+        $hadiah->save();
+
+        $partisipan = Partisipan::firstWhere('hadiah', $hadiah->id);
+        $partisipan->hadiah = null;
+        $partisipan->save();
 
         return response()->json([
             'success' => true

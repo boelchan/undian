@@ -58,6 +58,7 @@ Route::resource('hadiah', HadiahController::class);
 Route::get('partisipan/data-list', [PartisipanController::class, 'dataList'])->name('partisipan.data.list');
 Route::resource('partisipan', PartisipanController::class);
 Route::get('hadiah/data-list', [HadiahController::class, 'dataList'])->name('hadiah.data.list');
+Route::post('hadiah/{hadiah}/reload', [HadiahController::class, 'reload'])->name('hadiah.reload');
 Route::resource('hadiah', HadiahController::class);
 
 Route::get('undian', [DashboardController::class, 'undian'])->name('hadiah.undian');

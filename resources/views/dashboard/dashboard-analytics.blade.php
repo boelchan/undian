@@ -38,7 +38,7 @@
           @if ($item->pemenang)
           <div class="alert alert-primary" role="alert">
             <h4 class="alert-heading">{{ @$item->pemenang->nama }}</h4>
-            <div class="alert-body">{{ @$item->pemenang->alamat}}</div>
+            <div class="alert-body">{{ @$item->pemenang->nik}}</div>
           </div>
           @else
           <form action="{{ route('hadiah.undian') }}" method="get">
