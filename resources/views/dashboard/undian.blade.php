@@ -197,7 +197,7 @@ startButton.addEventListener('click', function() {
 });
 stopButton.addEventListener('click', function() {
 	this.style.display = "none";
-	ulangButton.style.display = "block";
+	ulangButton.style.display = "none";
 	simpanButton.style.display = "block";
 	clearInterval(intervalHandle);
     headerOne.innerHTML = '{{ $pemenang->nama }}';

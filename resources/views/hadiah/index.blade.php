@@ -82,7 +82,7 @@
                     table.draw();
                     Swal.fire({
                         title: 'Sukses',
-                        text: 'Data berhasil dihapus',
+                        text: 'Data berhasil diubah',
                         icon: 'success',
                         timer: 1000,
                         showConfirmButton: false,

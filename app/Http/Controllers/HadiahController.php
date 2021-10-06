@@ -25,7 +25,8 @@ class HadiahController extends Controller
      */
     public function dataList(Request $request)
     {
-        $hadiah = Hadiah::select(['id', 'hadiah', 'status', 'icon'])->orderBy('id', 'asc');
+        $hadiah = Hadiah::select(['id', 'hadiah', 'status', 'icon'])->orderBy('id', 'asc')
+                ->addSelect(['pemenang' => Partisipan::selectRaw('concat(nik, " - ",nama)')->whereColumn('hadiah', 'hadiahs.id')->limit(1)]);
 
         return Datatables::of($hadiah)
             ->addIndexColumn()
@@ -46,6 +47,9 @@ class HadiahController extends Controller
             })
             ->editColumn('hadiah', function ($hadiah) {
                 return '<img src="' . asset("storage/icon/" . $hadiah->icon) . '" alt="" width="50px"> ' . $hadiah->hadiah;
+            })
+            ->editColumn('status', function ($hadiah) {
+                return $hadiah->pemenang;
             })
             ->rawColumns(['hadiah', 'action'])
             ->make();
@@ -134,10 +138,10 @@ class HadiahController extends Controller
     {
         DB::transaction(function () use ($hadiah) {
             $partisipan = Partisipan::firstWhere('hadiah', $hadiah->id);
-            if ($partisipan) {
+            // if ($partisipan) {
                 $partisipan->hadiah = null;
                 $partisipan->save();
-            }
+            // }
 
             $hadiah->status = 'belum';
             $hadiah->save();
